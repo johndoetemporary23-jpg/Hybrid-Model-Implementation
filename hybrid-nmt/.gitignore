@@ -1,0 +1,39 @@
+# Data directory - ignore large files
+*.pt
+*.pkl
+*.pth
+
+# Raw data
+data/raw/
+
+# Model checkpoints
+checkpoints/
+
+# Results
+results/
+
+# Logs
+logs/
+runs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.env

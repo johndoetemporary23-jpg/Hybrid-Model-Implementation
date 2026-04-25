@@ -1,0 +1,65 @@
+# ================================================================================
+# Hybrid NMT Configuration
+# IndicBERT v2 Encoder + IndicTrans2 Decoder for English → Meitei Translation
+# ================================================================================
+
+# Model paths
+encoder_model: "ai4bharat/IndicBERTv2-MLM-Sam-TLM"
+decoder_model: "ai4bharat/indictrans2-en-indic-dist-200M"
+
+# Language codes
+src_lang: "eng_Latn"
+tgt_lang: "mni_Beng"
+
+# Model dimensions
+encoder_dim: 768
+decoder_dim: 1024
+
+# Training hyperparameters
+batch_size: 32
+learning_rate: 5e-4
+learning_rate_phase2: 1e-4
+learning_rate_phase3: 5e-5
+weight_decay: 0.01
+warmup_steps: 4000
+label_smoothing: 0.1
+max_grad_norm: 1.0
+
+# Sequence lengths
+max_src_len: 128
+max_tgt_len: 128
+
+# Data splits
+train_split: 270000
+val_split: 15000
+test_split: 15000
+
+# Training phases
+num_epochs: 20
+phase1_epochs: 5
+phase2_epochs: 5
+phase3_epochs: 10
+
+# Decoder unfreezing
+unfreeze_decoder_layers: 4
+unfreeze_encoder_layers: 4
+
+# Optimization
+fp16: true
+gradient_accumulation_steps: 1
+
+# Early stopping
+early_stopping_patience: 5
+early_stopping_metric: "val_loss"
+
+# Checkpoint settings
+save_every_n_epochs: 5
+
+# Validation
+validation_frequency: 1  # validate every N epochs
+compute_bleu_on_validation: true
+
+# Inference
+beam_size: 5
+max_inference_len: 128
+num_beams: 5
